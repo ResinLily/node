@@ -1,0 +1,42 @@
+{{extend './_layout/home.html'  }}
+
+{{block 'title'}}首页{{/block}}
+
+{{block 'head'}}
+<style>
+    *{
+        margin: 0;
+        padding:0;
+        box-sizing: border-box;
+
+    }
+    html,body{
+        font-size: 14px;
+    }
+    .text{
+        resize: none;
+        width: 30em;
+        min-height: 8em;
+    }
+
+</style>
+{{/block}}
+
+{{block 'body'}}
+    <section id="forum">
+        <div class="container shadow rounded-lg  py-4">
+            <div class="row">
+                <div class="col textSide text-center">
+                    <textarea class="text">
+
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+
+    </section>
+{{/block}}

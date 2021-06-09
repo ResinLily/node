@@ -1,0 +1,78 @@
+{{extend './_layout/home.html'}}
+
+{{block 'title'}}{{'多人博客 - 首页'}}{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  {{include './_partials/settings-nav.html'}}
+  <div class="col-md-5">
+    <form id="message">
+      <input type="hidden" name="id" value="{{user.email}}">
+      <div class="form-group">
+        <label for="exampleInputEmail1">账号</label>
+        <input class="form-control" name="email" disabled value="{{user.email}}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">昵称</label>
+        <input type="" class="form-control" id="exampleInputPassword1" name="nickname" value={{user.nickname}}>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">介绍</label>
+        <textarea class="form-control" name="bio" rows="3">{{user.bio}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">性别</label>
+        <div>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 保密
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">生日</label>
+        <input type="" class="form-control" name="birthday" id="exampleInputPassword1" value={{user.birthday}}>
+      </div>
+      <button type="submit" class="btn btn-success">保存</button>
+    </form>
+  </div>
+
+</section>
+{{/block}}
+
+{{block 'script'}}
+
+<script>
+  $(function (){
+    $('#message').on('submit',function (e){
+      e.preventDefault();
+      let formData = $(this).serialize();
+      $.ajax({
+        url:'/settings/profile',
+        type:'post',
+        data:formData,
+        dataType:"json",
+        success:function (data){
+          let err_code = data.err_code
+          if (err_code === 0) {
+            // window.alert('注册成功！')
+            // 服务端重定向针对异步请求无效
+            window.location.href = '/'
+          } else if (err_code === 1) {
+            window.alert('昵称重复！')
+          } else if (err_code === 500) {
+            window.alert('服务器忙，请稍后重试！')
+          }
+        }
+
+      })
+    })
+
+  })
+</script>
+{{/block}}

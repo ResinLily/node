@@ -1,0 +1,97 @@
+<!--顶部导航开始-->
+<nav id="nav">
+    <div class="container ">
+        <div class="row ">
+            <div class="col shadow-sm ">
+                <nav class="navbar p-1 navbar-expand-lg navbar-light bg-white">
+                    <a class="navbar-brand navbar-toggler border-0" href="/">
+                        <img src="../public/img/php_icon.jpg" alt="首页" class="img-fluid" style="max-width: 50px">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link monkey pl-4" href="/forum">学习猿地 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link clound pl-4" href="#">智校云</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link disabled">
+                                    <i class="mark text-danger"> QQ: 1377085867</i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="form-inline my-2 my-lg-0 nav-item dropdown  ">
+                            <a class="nav-link dropdown-toggle weChat pl-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                咨询微信
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--顶部导航结束-->
+
+<!--头部开始-->
+<header class="mt-2 d-lg-block d-none ">
+    <div class="container">
+        <div class="row  py-4 align-items-center">
+            <div class="col  ">
+                <a href="/"><img src="../public/img/logo.png" style="max-width: 100px;" alt="融职教育"></a>
+            </div>
+            <div class="col pt-3">
+                <blockquote class="blockquote text-center">
+                    <p>手脑并用，学做合一</p>
+                </blockquote>
+            </div>
+            <div class="col pb-1 ">
+
+                <div class="text-right">
+
+                        {{ if user }}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img width="20" height="20" src="../public/img/avatar-default.png" alt=""> <span class="caret"></span></a>
+                            <ul class="dropdown-menu mt-1">
+                                <li class="dropdown-item">
+                                    {{user.nickname}}
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-item" ><a href="/settings/profile">个人主页</a></li>
+                                <li class="dropdown-item"><a href="#">设置</a></li>
+                                <li class="dropdown-item"><a href="/logout">退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                        {{ else }}
+
+                        <a href="/login" class="btn btn-success">登录</a>
+                        <a href="/register" class="btn btn-info">注册</a>
+
+                        {{ /if }}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+<blockquote class="blockquote text-center my-2 d-lg-none">
+    <p>手脑并用，学做合一</p>
+</blockquote>
+<!--头部结束-->
